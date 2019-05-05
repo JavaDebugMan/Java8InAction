@@ -1,3 +1,4 @@
+/*
 package lambdasinaction.chap6;
 
 import java.util.*;
@@ -30,11 +31,14 @@ public class PartitionPrimeNumbers {
         return IntStream.rangeClosed(2, n).boxed().collect(new PrimeNumbersCollector());
     }
 
-    public static boolean isPrime(List<Integer> primes, Integer candidate) {
+ */
+/*   public static boolean isPrime(List<Integer> primes, Integer candidate) {
         double candidateRoot = Math.sqrt((double) candidate);
         //return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
         return primes.stream().takeWhile(i -> i <= candidateRoot).noneMatch(i -> candidate % i == 0);
-    }
+    }*//*
+
+*/
 /*
     public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
         int i = 0;
@@ -46,7 +50,8 @@ public class PartitionPrimeNumbers {
         }
         return list;
     }
-*/
+*//*
+
     public static class PrimeNumbersCollector
             implements Collector<Integer, Map<Boolean, List<Integer>>, Map<Boolean, List<Integer>>> {
 
@@ -58,14 +63,16 @@ public class PartitionPrimeNumbers {
             }};
         }
 
-        @Override
+     */
+/*   @Override
         public BiConsumer<Map<Boolean, List<Integer>>, Integer> accumulator() {
             return (Map<Boolean, List<Integer>> acc, Integer candidate) -> {
                 acc.get( isPrime( acc.get(true),
                         candidate) )
                         .add(candidate);
             };
-        }
+        }*//*
+
 
         @Override
         public BinaryOperator<Map<Boolean, List<Integer>>> combiner() {
@@ -104,3 +111,4 @@ public class PartitionPrimeNumbers {
                         });
     }
 }
+*/

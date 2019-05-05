@@ -1,12 +1,16 @@
+/*
 package lambdasinaction.chap6;
 
 import java.util.function.*;
 
 public class CollectorHarness {
 
+    private static int index = 1_000_000;
+
     public static void main(String[] args) {
+        System.out.println(index);
         //System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimes) + " msecs");
-        System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimesWithCustomCollector) + " msecs" );
+        System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimesWithCustomCollector) + " msecs");
     }
 
     private static long execute(Consumer<Integer> primePartitioner) {
@@ -21,3 +25,4 @@ public class CollectorHarness {
         return fastest;
     }
 }
+*/

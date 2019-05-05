@@ -17,6 +17,7 @@ public class LocalDateTimeTest {
         //test();
         System.out.println(getOnline());
         System.out.println(getPre());
+        testZone();
     }
 
     private static void localDateTime() {
@@ -50,5 +51,19 @@ public class LocalDateTimeTest {
         Instant now = Instant.now();
         LocalDateTime localDateTime = LocalDateTime.ofInstant(now, zoneId);
         return localDateTime.toLocalDate();
+    }
+
+    /**
+     *2019-05-06T00:12:52.996+08:00[Asia/Shanghai]
+     *|LocalDate|- LocalTime-|--------ZoneId-----|
+     *|----LocalDateTime-----|
+     *|-----------------ZoneDateTime--------------|
+     */
+    private static void testZone() {
+        Instant now = Instant.now();
+        ZoneId zoneId = TimeZone.getDefault().toZoneId();
+        ZonedDateTime zonedDateTime = now.atZone(zoneId);
+        System.out.println(zonedDateTime);
+
     }
 }

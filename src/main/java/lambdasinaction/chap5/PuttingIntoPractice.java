@@ -3,6 +3,7 @@ package lambdasinaction.chap5;
 import lambdasinaction.chap5.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
@@ -60,7 +61,15 @@ public class PuttingIntoPractice{
                         .sorted()
                         .reduce("", (n1, n2) -> n1 + n2);
         System.out.println(traderStr);
-        
+
+        System.out.println("------------collect------------------------");
+        String collect = transactions.stream()
+                .map(transaction -> transaction.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(""));
+
+        System.out.println(collect);
         // Query 5: Are there any trader based in Milan?
         
         boolean milanBased =

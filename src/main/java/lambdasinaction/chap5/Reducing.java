@@ -5,6 +5,7 @@ import lambdasinaction.chap4.*;
 import java.util.stream.*;
 import java.util.*;
 
+import static java.util.stream.Collectors.summingInt;
 import static lambdasinaction.chap4.Dish.menu;
 
 public class Reducing {
@@ -33,5 +34,11 @@ public class Reducing {
                 .reduce(Integer::sum).orElse(0);
         System.out.println(integer);
         System.out.println("Number of calories:" + calories);
+
+        int i = menu.stream().collect(summingInt(Dish::getCalories));
+        System.out.println("iiii->" + i);
+
+        int sum1 = menu.stream().mapToInt(Dish::getCalories).sum();
+        System.out.println("sum1--------->" + sum1);
     }
 }

@@ -4,11 +4,13 @@ import java.util.*;
 import java.util.function.*;
 
 import static java.util.stream.Collectors.*;
+import static lambdasinaction.chap6.Dish.Type.MEAT;
+import static lambdasinaction.chap6.Dish.Type.OTHER;
 import static lambdasinaction.chap6.Dish.menu;
 
 public class Summarizing {
 
-    public static void main(String ... args) {
+    public static void main(String... args) {
         System.out.println("Nr. of dishes: " + howManyDishes());
         System.out.println("The most caloric dish is: " + findMostCaloricDish());
         System.out.println("The most caloric dish is: " + findMostCaloricDishUsingComparator());
@@ -31,7 +33,8 @@ public class Summarizing {
     private static Dish findMostCaloricDishUsingComparator() {
         Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
         BinaryOperator<Dish> moreCaloricOf = BinaryOperator.maxBy(dishCaloriesComparator);
-        return menu.stream().collect(reducing(moreCaloricOf)).get();
+        return menu.stream().reduce(moreCaloricOf).orElse(null);
+        //    return menu.stream().collect(reducing(moreCaloricOf)).get();
     }
 
     private static int calculateTotalCalories() {
